@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function validateForm(event) {
+      event.preventDefault(); // Prevent form submission
+
+      let isValid = true;
+      document.querySelectorAll(".error").forEach(el => el.innerText = "");
+
+      let companyName = document.getElementById("company_name").value.trim();
+      let crn = document.getElementById("crn").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let phone = document.getElementById("phone").value.trim();
+      let password = document.getElementById("password").value;
+      let confirmPassword = document.getElementById("confirm_password").value;
+      let zipCode = document.getElementById("zip_code").value.trim();
+      let terms = document.getElementById("terms").checked;
+
+      let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      let phoneRegex = /^[0-9]{8,15}$/;
+      let crnRegex = /^[0-9]+$/;
+
+      if (companyName === "") {
+        document.getElementById("company_name_error").innerText = "Company Name is required.";
+        isValid = false;
+      }
+      if (!crnRegex.test(crn)) {
+        document.getElementById("crn_error").innerText = "Commercial Registration Number must be numeric.";
+        isValid = false;
+      }
+      if (!emailRegex.test(email)) {
+        document.getElementById("email_error").innerText = "Enter a valid email address.";
+        isValid = false;
+      }
+      if (!phoneRegex.test(phone)) {
+        document.getElementById("phone_error").innerText = "Phone number must contain 8-15 digits.";
+        isValid = false;
+      }
+      if (password.length < 6) {
+        document.getElementById("password_error").innerText = "Password must be at least 6 characters.";
+        isValid = false;
+      }
+      if (password !== confirmPassword) {
+        document.getElementById("confirm_password_error").innerText = "Passwords do not match.";
+        isValid = false;
+      }
+      if (zipCode === "" || isNaN(zipCode)) {
+        document.getElementById("zip_code_error").innerText = "Zip Code must be numeric.";
+        isValid = false;
+      }
+      if (!terms) {
+        document.getElementById("terms_error").innerText = "You must agree to the terms and conditions.";
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert("Form submitted successfully!");
+        window.location.href = "home.html"; // Redirect to home page
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+  <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
+    <h1 class="text-2xl font-bold mb-4">Register</h1>
+    <form id="registerForm" onsubmit="validateForm(event)">
+      
+      <label class="block">Company Name</label>
+      <input id="company_name" type="text" class="w-full p-2 border rounded">
+      <span id="company_name_error" class="text-red-500 text-sm"></span>
+
+      <label class="block mt-2">Commercial Registration Number</label>
+      <input id="crn" type="text" class="w-full p-2 border rounded">
+      <span id="crn_error" class="text-red-500 text-sm"></span>
+
+      <label class="block mt-2">Email</label>
+      <input id="email" type="text" class="w-full p-2 border rounded">
+      <span id="email_error" class="text-red-500 text-sm"></span>
+
+      <label class="block mt-2">Phone Number</label>
+      <input id="phone" type="text" class="w-full p-2 border rounded">
+      <span id="phone_error" class="text-red-500 text-sm"></span>
+
+      <label class="block mt-2">Password</label>
+      <input id="password" type="password" class="w-full p-2 border rounded">
+      <span id="password_error" class="text-red-500 text-sm"></span>
+
+      <label class="block mt-2">Confirm Password</label>
+      <input id="confirm_password" type="password" class="w-full p-2 border rounded">
+      <span id="confirm_password_error" class="text-red-500 text-sm"></span>
+
+      <label class="block mt-2">Zip Code</label>
+      <input id="zip_code" type="text" class="w-full p-2 border rounded">
+      <span id="zip_code_error" class="text-red-500 text-sm"></span>
+
+      <div class="mt-4">
+        <input id="terms" type="checkbox">
+        <label for="terms">I agree to the Terms and Conditions</label>
+        <span id="terms_error" class="text-red-500 text-sm block"></span>
+      </div>
+
+      <button type="submit" class="w-full bg-blue-500 text-white p-2 mt-4 rounded">Register</button>
+    </form>
+  </div>
+</body>
+</html>
