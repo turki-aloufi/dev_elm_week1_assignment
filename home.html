@@ -5,17 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     async function fetchData() {
+      // Show loader before fetching data
       document.getElementById("loader").classList.remove("hidden");
       document.getElementById("data").innerHTML = ""; // Clear previous data
 
       try {
+        // Fetching API data
         let response = await fetch("https://jsonplaceholder.typicode.com/posts");
         let data = await response.json();
 
+        // Hide loader after fetching data
         document.getElementById("loader").classList.add("hidden");
 
+        // Display fetched data (only first 5 items)
         let content = data.slice(0, 5).map(post => 
           `<div class="bg-gray-200 p-4 rounded my-2 shadow">
             <h2 class="font-bold">${post.title}</h2>
@@ -28,6 +33,7 @@
       }
     }
 
+    // Run fetchData when the page loads
     window.onload = fetchData;
   </script>
 </head>
@@ -35,8 +41,10 @@
   <h1 class="text-2xl font-bold">Home Page</h1>
   <p class="mb-4">Fetching API Data...</p>
 
-  <div id="loader" class="loader border-4 border-blue-500 border-t-transparent rounded-full w-10 h-10 animate-spin hidden"></div>
+  <!-- Loader (hidden by default) -->
+  <div id="loader" class="border-4 border-blue-500 border-t-transparent rounded-full w-10 h-10 animate-spin hidden"></div>
 
+  <!-- Data container -->
   <div id="data" class="mt-4"></div>
 </body>
 </html>
