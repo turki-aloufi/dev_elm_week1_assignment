@@ -9,7 +9,7 @@ This project is a simple **Company Registration Form** with client-side validati
 
 ### 1️⃣ Clone the Repository  
 ```bash
-git clone https://github.com/your-username/project-name.git
+git clone https://github.com/turki-aloufi/dev_elm_week1_assignment.git
 cd project-name
 ```
 
@@ -75,5 +75,5 @@ Simply open `index.html` in your browser to test the registration form. After su
 
 💡 **Feel free to open an issue for bug reports or feature requests!**  
 
-📧 **Contact:** [Your Email or GitHub Profile]
+📧 **Contact:** turki-aloufi
 
