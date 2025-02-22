@@ -5,6 +5,11 @@ This project is a simple **Company Registration Form** with client-side validati
 
 ---
 
+<img src="Screenshot.png" height="350" />
+<img src="Mobile_Screenshot.png" height="350" />
+
+---
+
 ## ⚙️ Setup Instructions  
 
 ### 1️⃣ Clone the Repository  

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +22,7 @@
         document.getElementById("loader").classList.add("hidden");
 
         // Display fetched data (only first 5 items)
-        let content = data.slice(0, 5).map(post => 
+        let content = data.slice(0, 5).map(post =>
           `<div class="bg-gray-200 p-4 rounded my-2 shadow">
             <h2 class="font-bold">${post.title}</h2>
             <p>${post.body}</p>
@@ -37,14 +38,16 @@
     window.onload = fetchData;
   </script>
 </head>
-<body class="bg-gray-100 flex flex-col items-center justify-center h-screen p-4">
+
+<body class="bg-gray-100 flex flex-col items-center justify-center p-4">
   <h1 class="text-2xl font-bold">Home Page</h1>
-  <p class="mb-4">Fetching API Data...</p>
 
   <!-- Loader (hidden by default) -->
-  <div id="loader" class="border-4 border-blue-500 border-t-transparent rounded-full w-10 h-10 animate-spin hidden"></div>
+  <div id="loader" class="border-4 border-blue-500 border-t-transparent rounded-full w-10 h-10 animate-spin hidden">
+  </div>
 
   <!-- Data container -->
-  <div id="data" class="mt-4"></div>
+  <div id="data" class="my-4"></div>
 </body>
+
 </html>
